@@ -8,8 +8,7 @@ class SplashPage extends StatefulWidget {
 }
 
 class SplashPageState extends State<SplashPage> {
-// THIS FUNCTION WILL NAVIGATE FROM SPLASH SCREEN TO HOME SCREEN.
-// USING NAVIGATOR CLASS.
+
 
   void _navigationToNextPage() {
     Navigator.pushReplacementNamed(context, '/HomePage');
@@ -25,23 +24,23 @@ class SplashPageState extends State<SplashPage> {
     super.initState();
     _startSplashScreenTimer();
   }
-@override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
 
+  @override
+  void dispose() {
+    super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
-    return Material(child: new Container(
+    return Material(
+        child: new Container(
       color: Colors.redAccent,
       child: Center(
-        child: Text(
-            "NEWS APP",
-            style: TextStyle(color: Colors.white,
+        child: Text("NEWS APP",
+            style: TextStyle(
+                color: Colors.white,
                 fontSize: 40.0,
-                textBaseline: TextBaseline.alphabetic)
-        ),
+                textBaseline: TextBaseline.alphabetic)),
       ),
     ));
   }
