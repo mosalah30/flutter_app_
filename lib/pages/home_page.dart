@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_demo/model/card_item.dart';
 import 'package:flutter_app_demo/pages/web_view_page.dart';
 import 'package:flutter_app_demo/ui/card_widget.dart';
-import 'package:flutter_app_demo/ui/circle_image.dart';
+import 'package:flutter_app_demo/ui/rectangle_image.dart';
 import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
@@ -13,13 +13,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Cards> list = List();
-  List<CircleImage> listImage = List();
+  List<RectangleImage> listImage = List();
   var isLoading = false;
 
   _fetchData() async {
     setState(() => isLoading = true);
     final response = await http.get(
-        "https://newsapi.org/v2/top-headlines?country=au&apiKey=6ba7df004b6846989b72984297bd7e70");
+        "https://newsapi.org/v2/top-headlines?country=eg&category=sports&apiKey=6ba7df004b6846989b72984297bd7e70");
     if (response.statusCode == 200) {
       var jsons = json.decode(response.body);
       final articles = jsons['articles'];
@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
       final articles = jsons['articles'];
       for (var i in articles) {
         listImage
-            .add(CircleImage(i['urlToImage'].toString(), i['url'].toString()));
+            .add(RectangleImage(i['urlToImage'].toString(), i['url'].toString()));
       }
       setState(() => isLoading = false);
     } else {
@@ -76,12 +76,12 @@ class _HomePageState extends State<HomePage> {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Container(
-                    height: 120,
+                    height: 160,
                     child: ListView.builder(
                         itemCount: listImage.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (BuildContext context, int index) {
-                          return CircleImage(listImage[index].imageUrl,
+                          return RectangleImage(listImage[index].imageUrl,
                               listImage[index].textUrl);
                         }),
                   ),

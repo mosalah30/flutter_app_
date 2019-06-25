@@ -10,7 +10,7 @@ class CartWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Material(
-        color: Colors.lightBlue,
+        color: Colors.redAccent,
         child: Container(
           margin: const EdgeInsets.all(20.0),
           child: GestureDetector(
@@ -31,11 +31,18 @@ class CartWidget extends StatelessWidget {
                   Image.network(
                     image,fit: BoxFit.fitWidth,height: 150,
                   ),
-                  Text(
-                    title,
-                    style: TextStyle(fontFamily: 'AbrilFatface'),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      title,
+                      style: TextStyle(fontFamily: 'AbrilFatface',fontSize: 20,fontStyle: FontStyle.italic,color: Colors.redAccent),
+                    ),
                   ),
-                   Text(description)
+                   Divider(),
+                   Padding(
+                     padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                     child: Text(description),
+                   )
                 ],
               ),
             ),
